@@ -1,0 +1,38 @@
+repos:  
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files  
+  - repo: local
+    hooks:
+      - id: format
+        name: Golang code formatter
+        description: A golang formatter that fixes long lines.
+        entry: golines -w
+        args:
+          [
+            "-m",
+            "100",
+            "-t",
+            "4",
+            "--shorten-comments",
+            "--ignored-dirs=vendor",
+          ]
+        types: [go]
+        language: system
+      - id: linter
+        name: Golang linter
+        description: Run available linters in codebase
+        entry: make linter
+        types: [go]
+        language: system      
+      - id: gosec
+        name: Golang gosec safe coding scan
+        description: Run gosec on all packages
+        entry: make gosec
+        types: [go]
+        language: system
+        pass_filenames: false      

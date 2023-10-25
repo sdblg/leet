@@ -1,0 +1,73 @@
+# This file contains all available configuration options
+# with their default values.
+# refer https://golangci-lint.run/usage/linters/ for the details
+linters:
+  disable-all: true
+  enable:
+    - asciicheck
+    - bodyclose
+    - cyclop
+  #  - depguard ## TODO add a list of allowerd dependencies.
+    - dogsled
+    - dupl
+    - errcheck
+    - errname
+    - exportloopref
+    - funlen
+    - goconst
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    - gomnd
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - lll
+    - megacheck
+    - misspell
+    - nakedret
+    - noctx
+    - nolintlint
+    - revive
+    - staticcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - whitespace
+  # Disabled:
+  # - scopelint
+  # - gochecknoglobals
+  #  - gochecknoinits
+  # - gocognit
+  # - godot
+  # - godox
+  # - goerr113
+  # - interfacer
+  # - maligned
+  # - nestif
+  # - prealloc
+  # - testpackage
+  # - revive
+  # - varcheck  # deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter.  Replaced by unused.
+  # - deadcode  # deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter.  Replaced by unused.
+  # - wsl
+linters-settings:
+  dupl:
+    threshold: 300
+  lll:
+    line-length: 120
+  gocyclo:
+    min-complexity: 15
+  cyclop:
+    max-complexity: 15
+    skip-tests: true
+  funlen:
+    lines: 250
+    statements: 60
+run:
+  timeout: 5m
